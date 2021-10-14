@@ -30,8 +30,8 @@ Settings portion allows the user to update the information provided as the user 
 Dillinger uses a number of open source projects to work properly:
 - [React.js](https://reactjs.org/)- for front end development
 - [React Redux](https://react-redux.js.org/) - for frontend  state manipulation
-- [Node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework
+- [Node.js](http://nodejs.org/) - evented I/O for the backend
+- [Express](https://expressjs.com/) - fast node.js network app framework
 
 ## Installation
 
