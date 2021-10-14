@@ -7,8 +7,8 @@ export default function Profile() {
     let location = useLocation();
     let initialData = getloggedInUsersInfo();
 
-    console.log(initialData);
-    console.log(getloggedInUsersInfo());
+    // console.log(initialData);
+    // console.log(getloggedInUsersInfo());
 
     const [authorisedUserDetails, setAuthorisedUserDetails] = useState(initialData);
     return (

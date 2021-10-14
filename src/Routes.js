@@ -12,6 +12,7 @@ import NotFoundPage from './views/NotFoundPage'
 import { isLoggedIn } from './Utility'
 import PublicRoute from './RoutingModules/PublicRoute'
 import PrivateRoute from './RoutingModules/PrivateRoute'
+import ServerErrorView from './views/ServerErrorView'
 
 export default function Routes(props) {
     return (
@@ -23,6 +24,7 @@ export default function Routes(props) {
                 <PrivateRoute path = "/profile" component = {Profile} />
                 <PrivateRoute path = "/fullpost" component = {FullPost} />
                 <PrivateRoute exact path = "*" component = {NotFoundPage} />
+                <PublicRoute exact path = "/internal_server_error" component = {ServerErrorView} />
             </Switch>
         </BrowserRouter>
     )

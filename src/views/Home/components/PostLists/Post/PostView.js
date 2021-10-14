@@ -106,7 +106,7 @@ export default function PostView(props) {
         'Delete'
     ];
 
-    console.log(item);
+    // console.log(item);
 
     return (
             <div className = "root-postview">

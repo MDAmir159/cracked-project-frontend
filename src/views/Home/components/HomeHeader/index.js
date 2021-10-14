@@ -1,6 +1,8 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ObjectToBeSavedInBrowser } from '../../../../model/ObjectToBeSavedInBrowser';
+import { LogOutAction } from '../../../../redux/actions/LogStatus';
 import Routes from '../../../../Routes';
 import { getLoggedOut } from '../../../../Utility';
 import HomeHeaderElements from './HomeHeaderElements'
@@ -9,6 +11,7 @@ export default function HomeHeader(props) {
     const {authorisedUserDetails, setAuthorisedUserDetails} = props;
 
     let history = useHistory();
+    const dispatch = useDispatch();
 
     const onClickProfileIconHandler = () =>{
         history.push({
@@ -21,7 +24,7 @@ export default function HomeHeader(props) {
         ////////// saving user info locally as being logged in   /////////////////
         const objectToBeSaved = new ObjectToBeSavedInBrowser(false,"");
         getLoggedOut('DLGT_PROJECT2_postGivingAppRemastered',JSON.stringify(objectToBeSaved));
-
+        dispatch(LogOutAction());
         ////////// setting new path  //////////
         history.push({
             pathname : '/login'

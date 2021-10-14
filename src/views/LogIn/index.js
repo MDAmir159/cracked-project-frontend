@@ -8,11 +8,13 @@ import { URL } from '../../urls/url';
 import { ObjectToBeSavedInBrowser } from '../../model/ObjectToBeSavedInBrowser';
 import { getLoggedIn } from '../../Utility';
 import { headers } from '../../headers';
+import { useDispatch } from 'react-redux';
+import { LogInAction } from '../../redux/actions/LogStatus';
 
 export default function LogIn() {
 
     ////////////////////////////////////////////   model portion    ////////////////////////////////////////////////////
-
+    const dispatch = useDispatch();
     const [authorisedUserDetails, setAuthorisedUserDetails] = useState(new Object());
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [tempUserDetails, setTempUserDetails] = useState({
@@ -45,28 +47,29 @@ export default function LogIn() {
     const saveToBrowserStorage = value =>{
         const objectToBeSaved = new ObjectToBeSavedInBrowser(true,value);
         getLoggedIn('DLGT_PROJECT2_postGivingAppRemastered',JSON.stringify(objectToBeSaved));
+        dispatch(LogInAction(objectToBeSaved));
     }
 
     /// controller portion
-    const loginSubmitHandler = (e) =>{
+    const loginSubmitHandler = async(e) =>{
         e.preventDefault();
         if(tempUserDetails.tempUserEmail && tempUserDetails.tempUserHandleName && tempUserDetails.tempUserPassword){
-            axios.post(URL.LOGIN_URL, {tempUserDetails} , {
-                headers : headers
-            })
-            .then((res) =>{
+            // console.log(tempUserDetails);
+            try {
+                const res = await axios.post(URL.LOGIN_URL, {tempUserDetails});
                 saveToBrowserStorage(res.data[0]);
                 if(res.data.length){
                     history.push({
                         pathname : '/',
                         state : {data : res.data[0]}
                     });
-                    
                     setAuthorisedUserDetails(res.data[0]);
                 } else {
                     alert('No matches !!')
                 }
-            })
+            } catch (error) {
+                console.log(error);
+            }
         } else {
             alert('What are doing??')
         }
