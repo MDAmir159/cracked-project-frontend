@@ -1,6 +1,6 @@
 # Friends-blog
 
-Friends-blog is a simple, full responsive website where people may share their thoughts. This website can serve as a forum for the exchange of ideas, opinions, and solutions to different problems among a group of people or a friend circle.
+Friends-blog is a simple, full responsive website. This website can serve as a forum for the exchange of ideas, opinions, and solutions to different problems among a group of people or a friend circle.
 
 
 ## Why this?
